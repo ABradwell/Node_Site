@@ -1,0 +1,23 @@
+block articles_carousel
+    .carousel.carousel-dark.slide(id=#{car_id}, data-bs-ride='carousel')
+      .carousel-indicators 
+        button.active(type='button', data-bs-target=#{car_id}, data-bs-slide-to=1, aria-current='true', aria-label=#{articles[0].article_title})
+        each art in #{articles[1:]}
+          button(type='button', data-bs-target=#{car_id}, data-bs-slide-to=#{artIterStat.index}, aria-label=#{art.article_title})
+      .carousel-inner
+        each art in #{articles}
+          .carousel-item.text-center( data-bs-interval='10000')
+            .d-flex.align-items-start.flex-column(style='min-height:450px')
+              .logo_wrapper.text-center.mb-auto.mt-5.col-12
+                img.company_logo.mx-auto(style='wid75%; max-width:600px;', src='/images/' + #{art.article_image_str}, alt='Image for ' + #{art.article_title})
+              .information_wrapper.my-0.col-8.mx-auto.col-12.pt-4
+                .text-center.justify-content-center
+                  p.fw-bold.text-center.my-0(text=#{art.article_title})
+                  p.text-center.my-0(text=#{art.article_subtitle})
+                  a.btn.btn-outline-dark.mt-4.mb-5(target='_blank', href=#{art.article_link}, role='button') View
+      button.carousel-control-prev(type='button', data-bs-target=#{car_id}, data-bs-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.visually-hidden Previous
+      button.carousel-control-next(type='button', data-bs-target=#{car_id}, data-bs-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.visually-hidden Next
