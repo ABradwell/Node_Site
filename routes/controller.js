@@ -167,19 +167,52 @@ router.get('/Resume', function(req, res) {
 
 router.get('/projectPage', function(req, res) {
     
-    var id = parseInt(request.params.id);
-    var project = query_service.getProjectById(id);
-    var content = query_service.getProjectPageContentById(id);
-    var tags = query_service.getAllTagValuesByProjectId(id);
-
-    res.render('projectPage', 
-        { 
-            project: project, 
-            content: content,
-            tags: tags
+    // var id = parseInt(req.params.id);
+    var id = req.query.id;
+    console.log(id);
+    
+    // var project = query_service.getProjectById(id);
+    pool.query('SELECT * FROM project WHERE project_id = ' + id, (error, results1) => {
+        if (error) {
+            throw error
         }
-    );
+        // var content = query_service.getProjectPageContentById(id);
+        pool.query('SELECT * FROM blurb INNER JOIN blurb_type ON blurb_type.blurb_type_id = blurb.blurb_type_id WHERE project_id = ' + id, (error2, results2) => {
+            if (error2) {
+                throw error2
+            }
+            pool.query('SELECT project_tag_value FROM project_tag WHERE project_id = ' + id, (error3, results3) => {
+                if (error3) {
+                    throw error3
+                }
+                
+                console.log(results1.rows)
+                console.log(results2.rows)
+                console.log(results3.rows)
+
+                res.render('projectPage', 
+                    { 
+                        project: results1.rows[0],
+                        content: results2.rows,
+                        tags: results3.rows
+                    }
+                );
+            })
+        })
+    })
 });
+
+
+// public List<Blurb> getAllBlurbsByProjectId(Integer project_id) {
+
+//     String SQL_CMD = String.format("SELECT * FROM blurb " +
+//             "INNER JOIN blurb_type ON blurb_type.blurb_type_id = blurb.blurb_type_id " +
+//             "WHERE project_id = %d", project_id);
+
+//     return jdbcTemplate.query(SQL_CMD, new BlurbRowMapper());
+// }
+
+
 
 router.get('/Projects', function(req, res) {
 
@@ -217,16 +250,20 @@ router.get('/Projects', function(req, res) {
 });
 
 router.get('/getScreenshotCarousel', function(req, res) {
+    var proj_id = req.query.proj_id;
 
-    var proj_id = parseInt(request.params.proj_id);
-    var screenshots = query_service.getAllScreenshotImagesByProjectId(proj_id);
-
-    res.render('screenshot_carousel', 
-        { 
-            screenshots: screenshots, 
-            car_id: 'screenshot_carousel'
+    // var screenshots = query_service.getAllScreenshotImagesByProjectId(proj_id);
+    pool.query('SELECT image_str FROM project_screenshot WHERE project_id = ' + proj_id, (error, results) => {
+        if (error) {
+            throw error
         }
-    );
+        res.render('screenshot_carousel', 
+            { 
+                screenshots: results.rows, 
+                car_id: 'screenshot_carousel'
+            }
+        );
+    })
 });
 
 module.exports = router;

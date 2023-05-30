@@ -1,0 +1,32 @@
+//- doctype html
+//- .carousel.carousel-dark.slide(th:if='${#lists.size(screenshots) > 0}' th:id='${car_id}' data-bs-ride='carousel')
+//-   .carousel-inner
+//-     .carousel-item(th:each='img, imgStat: ${screenshots}' data-bs-interval='10000')
+//-       .d-flex.justify-content-center
+//-         img.mw-100(th:src='@{/images/screenshots/{ref}(ref=${img})}' style='max-height:450px' alt='Screenshot For Current Project')
+//-   button.carousel-control-prev(th:unless='${#lists.size(screenshots) == 1}' type='button' th:data-bs-target='|#${car_id}|' data-bs-slide='prev')
+//-     span.carousel-control-prev-icon(aria-hidden='true')
+//-     span.visually-hidden Previous
+//-   button.carousel-control-next(th:unless='${#lists.size(screenshots) == 1}' type='button' th:data-bs-target='|#${car_id}|' data-bs-slide='next')
+//-     span.carousel-control-next-icon(aria-hidden='true')
+//-     span.visually-hidden Next
+
+block articles_carousel
+  .d-flex.col-12.mx-auto
+      .col-2.d-flex.align-items-center.justify-content-end.text-end
+        .float-start
+          a.p-0.btn.btn-lg(role='button', data-bs-target='#' + car_id, data-bs-slide='prev')
+            svg( xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16")
+              path(d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z")
+      .carousel.col-10.col-md-9.col-lg-8.carousel-dark.slide(id=car_id, data-bs-ride='carousel')
+        .carousel-inner
+          each img in screenshots
+            .carousel-item.text-center(data-bs-interval='10000')
+              .d-flex.align-items-start.flex-column(style='min-height:450px')
+                .logo_wrapper.text-center.mb-auto.mt-5.col-12
+                  img.company_logo.mx-auto(src='/images/screenshots/' + img.image_str,  style='max-height:450px' alt='Screenshot For Current Project')
+      .col-2.col-md-1.d-flex.align-items-center
+        .float-start
+          a.p-0.btn.btn-lg(role='button', data-bs-target='#' + car_id, data-bs-slide='next')
+            svg(xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16")
+              path(d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z") 

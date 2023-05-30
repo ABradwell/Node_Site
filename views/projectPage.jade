@@ -1,63 +1,70 @@
-extends layout
-
-block content
-  html  
+doctype html
+html
     head
-        meta(charset='UTF-8')
         title Aiden Stevenson Bradwell
-            script(src='https://code.jquery.com/jquery-3.6.1.min.js', integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=', crossorigin='anonymous')
-            script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM", crossorigin="anonymous")
-            link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css", integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi", crossorigin="anonymous")
-            link(rel="stylesheet", href="/stylesheets/homepage.css")
-            link(rel="stylesheet", href="/stylesheets/carousel.css")
-    body
-        header#header
-        section#project_header.content.mx-auto.px-lg-5.px-3.pt-5(style='max-width:1500px')
-        #project_title_wrapper.col-10.mx-auto.text-center
-            h1.fw-bolder.fs-25(text=project.project_name)
-            p.mx-auto.col-10.col-md-8.col-lg-6.col-xlg-4(text=project.project_sub_title)
-        .d-flex.flex-wrap.border-top.border-1.border-primary.pt-5
-            #associated_tags_wrapper.col-7.col-lg-6.mx-auto
-            .col-10.col-lg-8.mx-0.ms-lg-auto
-                p.fw-bold Related Tags...
-                each tag in tags
-                    span.tag_btn.px-auto.mx-1.badge.rounded-pill.border.border-primary.text-primary(text=tag)
-            #github_card.col-7.col-lg-6.py-4.p-lg-0.mx-auto
-            .github-card(data-github=project.project_github_str, data-width='400', data-height='', data-theme='default')
-            script(src='//cdn.jsdelivr.net/github-cards/latest/widget.js')
-        span#project_id.d-none(text=project.project_id)
-        #image_scroller.border-top.border-1.border-primary.mt-5.py-3.col-12.col-lg-10.col-xlg-8.mx-auto
-            div
-            p.fw-bold Screenshot Gallery...
-            #screenshot_carousel_wrapper
-        section#project_body.border-top.border-dark.border-1(style='min-height:700px;')
-        nav#header-nav.navbar.sticky-top.bg-light.px-3.mb-3
-            ul.nav.nav-pills.justify-content-end
-                each blurb in content
-                    li.nav-item
-                        a.nav-link(href='#spy' + blurb.blurb_id, text=blurb.title) First
-        .p-3.rounded-2.col-12.col-md-10.col-lg-7.mx-auto.bg-light.mb-4(data-bs-spy='scroll', data-bs-target='#header-nav', data-bs-offset='0', tabindex='0')
-            each blurb in content
-                .mt-5(style='min-height:200px;')
-                h2(id='spy' + blurb.blurb_id, text=blurb.title)
-                p(utext=blurb.blurb_content, inline='text')
-        footer#footer
-        script.
-            $(function() {
 
-                var proj_id = $(this).find("#project_id").text()
-                var screenshot_request = new XMLHttpRequest();
+        script(src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12")
+        script(src='https://code.jquery.com/jquery-3.6.1.min.js', integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=', crossorigin='anonymous')
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM", crossorigin="anonymous")
 
-                screenshot_request.open("GET", "/controller/getScreenshotCarousel?proj_id=" + proj_id, true);
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css", integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi", crossorigin="anonymous")
+        link(rel="stylesheet", href="/stylesheets/homepage.css")
+        link(rel="stylesheet", href="/stylesheets/carousel.css")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        //- link(rel="stylesheet", href="/css/bootstrap.min.css")
+        
+    body.p-0.mx-0.mt-0
+        header
+            include components/reduced_header.jade
+        section.content.mx-auto.px-lg-5.px-3.pt-5(style="max-width:1500px")
+            #project_title_wrapper.col-10.mx-auto.text-center
+                h1.fw-bolder.fs-25 #{project.project_name}
+                p.mx-auto.col-10.col-md-8.col-lg-6.col-xlg-4 #{project.project_sub_title}
+            .d-flex.flex-wrap.border-top.border-1.border-primary.pt-5
+                #associated_tags_wrapper.col-7.col-lg-6.mx-auto
+                    .col-10.col-lg-8.mx-0.ms-lg-auto
+                        p.fw-bold Related Tags...
+                        each tag in tags
+                            span.tag_btn.px-auto.mx-1.badge.rounded-pill.border.border-primary.text-primary #{tag.project_tag_value}
+                #github_card.col-7.col-lg-6.py-4.p-lg-0.mx-auto
+                    .github-card(data-github=project.project_github_str, data-width='400', data-height='', data-theme='default')
+                    script(src='//cdn.jsdelivr.net/github-cards/latest/widget.js')
+            span#project_id.d-none #{project.project_id}
+            #image_scroller.border-top.border-1.border-primary.mt-5.py-3.col-12.col-lg-10.col-xlg-8.mx-auto
+                div
+                p.fw-bold Screenshot Gallery...
+                #screenshot_carousel_wrapper
+            section#project_body.border-top.border-dark.border-1(style='min-height:700px;')
+                nav#header-nav.navbar.sticky-top.bg-light.px-3.mb-3
+                    ul.nav.nav-pills.justify-content-end
+                        each blurb in content
+                            li.nav-item
+                                a.nav-link(href='#spy' + blurb.blurb_id) #{blurb.title}
+                .p-3.rounded-2.col-12.col-md-10.col-lg-7.mx-auto.bg-light.mb-4(data-bs-spy='scroll', data-bs-target='#header-nav', data-bs-offset='0', tabindex='0')
+                    each blurb in content
+                        .mt-5(style='min-height:200px;')
+                            h2(id='spy' + blurb.blurb_id) #{blurb.title}
+                            p(inline='text')!=blurb.blurb_content
+            footer#footer
+                include components\footer.jade
 
-                screenshot_request.onload = function() {
-                    $("#screenshot_carousel_wrapper").append(screenshot_request.responseText);
-                    $("#screenshot_carousel").find(".carousel-item")[0].classList.add("active");
-                    $( ".carousel-item" ).first().addClass("active")
 
-                    console.log($( ".carousel-item" ))
-                    console.log($( ".carousel-item" ).first())
-                }
+            script.
+                $(function() {
 
-                screenshot_request.send();
-            });
+                    var proj_id = $("#project_id").text()
+                    var screenshot_request = new XMLHttpRequest();
+
+                    screenshot_request.open("GET", "/controller/getScreenshotCarousel?proj_id=" + proj_id, true);
+
+                    screenshot_request.onload = function() {
+                        $("#screenshot_carousel_wrapper").append(screenshot_request.responseText);
+                        $("#screenshot_carousel").find(".carousel-item")[0].classList.add("active");
+                        $( ".carousel-item" ).first().addClass("active")
+
+                        console.log($( ".carousel-item" ))
+                        console.log($( ".carousel-item" ).first())
+                    }
+
+                    screenshot_request.send();
+                });

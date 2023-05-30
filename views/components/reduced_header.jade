@@ -1,17 +1,20 @@
-block reduced_header
-  nav.navbar.navbar-expand-lg.navbar-light.mt-0.pt-0
-    .container-fluid.justify-content-end
-      button.navbar-toggler.mt-1(type='button', data-bs-toggle='collapse', data-bs-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+style.
+  .nav-btn-cstm {
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  }
+section#splash_header.content.mb-5.px-4(style='')
+  nav.navbar.navbar-expand-lg.justify-content-end
+    .container-fluid
+      a.navbar-brand.fw-bolder.text-white.text-center.ms-4(href='/' style='font-size: 24px; line-height: 0.8;') Aiden Stevenson Bradwell
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#button_float' aria-controls='button_float' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
-      #navbarSupportedContent.collapse.navbar-collapse.justify-content-end.mt-0.pt-0
-        #button_float.d-flex.justify-content-end.mt-5.pb-3(style='max-width:800px')
-          div(id='nav-item zeroth-btn')
-            a.btn.btn-outline-light.fw-light.fw-bold(href='/') Home
-          div(id='nav-item first-btn')
-            a.btn.btn-outline-light.ms-5.fw-light(href='/Projects') Projects
-          div(id='nav-item second-btn')
-            a.btn.btn-outline-light.fw-light.ms-5(href='/WorkExperience') Work Experience
-          div(id='nav-item third-btn')
-            a.btn.btn-outline-light.fw-light.ms-5(href='/Resume') Resume/About me
-          div(id='nav-item fourth-btn')
-            a.btn.btn-outline-light.fw-light.ms-5(href='/Articles') Essays &amp; Articles
+      #button_float.collapse.navbar-collapse(style='')
+        ul.navbar-nav.ms-auto.mb-2.mb-lg-0.gap-4
+          li.nav-item.mt-3.mt-lg-0
+            a.h-100.btn.btn-outline-light.nav-btn-cstm.w-100.w-lg-auto(href='/controller/Projects') Projects
+          li.nav-item
+            a.h-100.btn.btn-outline-light.nav-btn-cstm.w-100.w-lg-auto(href='/.#experience_link') Work Experience
+          li.nav-item
+            a.h-100.btn.btn-outline-light.nav-btn-cstm.w-100.w-lg-auto(href='/controller/Resume') Resume/About me
+          li.nav-item
+            a.h-100.btn.btn-outline-light.nav-btn-cstm.w-100.w-lg-auto(href='/controller/Articles') Essays & Articles

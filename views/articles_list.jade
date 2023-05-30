@@ -1,15 +1,18 @@
-extends layout
-
-block content
-  html
+doctype html
+html
     head
-      title title
-      script(href="https://cdn.jsdelivr.net/npm/typed.js@2.0.12")
-      script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM", crossorigin="anonymous")
-      link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css", integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi", crossorigin="anonymous")
-      link(rel="stylesheet", href="/stylesheets/homepage.css")
-      link(rel="stylesheet", href="/stylesheets/carousel.css")
-    body
+        title Aiden Stevenson Bradwell
+
+        script(src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12")
+        script(src='https://code.jquery.com/jquery-3.6.1.min.js', integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=', crossorigin='anonymous')
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM", crossorigin="anonymous")
+
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css", integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi", crossorigin="anonymous")
+        link(rel="stylesheet", href="/stylesheets/homepage.css")
+        link(rel="stylesheet", href="/stylesheets/carousel.css")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        //- link(rel="stylesheet", href="/css/bootstrap.min.css")
+  body.p-0.mx-0.mt-0(min-height="1000px")
     header
         include components\reduced_header.jade
     section.content.mb-5.ms-5
@@ -19,19 +22,20 @@ block content
     section.content
       .splash_title
       #previous_experience_wrapper.content.d-flex.align-items-stretch.justify-content-center.flex-wrap
-        .work_cube.shadow.mx-3.my-4.border.border-secondary.border-1.p-1.align-items-start.flex-column(th:each='article, articleStat: ${articles}')
-          .flip-card-inner
-            .flip-card-front
-              .logo_wrapper.w-100.text-center.mb-auto.mt-1
-                img.article_logo.mx-auto(style='max-height:200px; max-width: 300px;', src='/images/' + article.article_image_str, alt='Article logo for ' + article.article_title)
-              br
-              .information_wrapper.my-0.col-12.pb-5
-                .text-center.justify-content-center
-                  p.fw-bold.text-center.my-0(text=article.article_title)
-            .flip-card-back.px-2.d-flex
-              .align-self-center.p-2.bd-highlight.text-center(style='height: 100px')
-                span#subtitle.fw-bolder(style='line-height: 0.8;', th:text=article.article_subtitle)
-                hr
-                a.btn.btn-outline-dark(href=article.article_link, target='_blank') View Article
+        each article in articles
+          .work_cube.shadow.mx-3.my-4.border.border-secondary.border-1.p-1.align-items-start.flex-column()
+            .flip-card-inner
+              .flip-card-front
+                .logo_wrapper.w-100.text-center.mb-auto.mt-1
+                  img.article_logo.mx-auto(style='max-height:200px; max-width: 300px;', src='/images/' + article.article_image_str, alt='Article logo for ' + article.article_title)
+                br
+                .information_wrapper.my-0.col-12.pb-5
+                  .text-center.justify-content-center
+                    p.fw-bold.text-center.my-0 #{article.article_title}
+              .flip-card-back.px-2.d-flex
+                .align-self-center.p-2.bd-highlight.text-center(style='height: 100px')
+                  span#subtitle.fw-bolder(style='line-height: 0.8;') #{article.article_subtitle}
+                  hr
+                  a.btn.btn-outline-dark(href=article.article_link, target='_blank') View Article
     footer#footer.mt-5
           include components\footer.jade
