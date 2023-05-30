@@ -1,27 +1,27 @@
 block previous_experience_cube
-    each employment in #{past_employment}
+    each employment in past_employment
       .work_cube.shadow.mx-3.my-4.border.border-secondary.border-1.p-1.align-items-start.flex-column
         .flip-card-inner
           .flip-card-front
             .logo_wrapper.w-100.text-center.mb-auto.mt-5
-              img.company_logo.mx-auto(style='max-height:120px;', th:src='@{/images/' + employment.image_src, alt='Company logo for' + employment.company_name)
+              img.company_logo.mx-auto(style='max-height:120px;', src='/images/' + employment.image_src, alt='Company logo for' + employment.company_name)
             br
             .information_wrapper.my-0.col-12.pb-5
               .text-center.justify-content-center
-                p.fw-bold.text-center.my-0(text=employment.position_title)
-                p.fw-light.text-center.my-0(text=employment.company_name)
+                p.fw-bold.text-center.my-0 #{employment.position_title}
+                p.fw-light.text-center.my-0 #{employment.company_name}
                 p.text-secondary.text-center.my-0
-                  span(text=employment.start_date)
+                  span #{employment.start_date}
                   |  - 
-                  span(text=employment.end_date)
+                  span #{employment.end_date}
           .flip-card-back
             div
               #title_and_header.pt-4.pb-1.px-3.text-center
-                h5#position_title.fw-bolder(style='line-height: 0.8;', text=employment.position_title)
-                h5#company_name.fw-light(style='line-height: 0.8;', text=employment.company_name)
+                h5#position_title.fw-bolder(style='line-height: 0.8;') #{employment.position_title}
+                h5#company_name.fw-light(style='line-height: 0.8;') #{employment.company_name}
                 h6#time_range.fw-light.text-secondary(style='line-height: 0.8;')
-                  span(text=employment.start_date)
+                  span #{employment.start_date}
                   |  - 
-                  span(text=employment.end_date)
+                  span #{employment.end_date}
               hr
-              #job_description.px-2(text=employment.job_description)
+              #job_description.px-2 #{employment.job_description}

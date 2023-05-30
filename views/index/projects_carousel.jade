@@ -1,25 +1,26 @@
 block projects_carousel
-    .carousel.carousel-dark.slide(th:id='${car_id}', data-bs-ride='carousel')
+    .carousel.carousel-dark.slide(id=car_id, data-bs-ride='carousel')
         .carousel-inner
-            each proj in #{projects}
+            each proj in projects
                 .carousel-item.text-center( data-bs-interval='10000')
-                    .d-flex.align-items-start.flex-column(style='min-height:450px')
-                    .col-3.col-md-6.m-0.p-0.d-flex.justify-content-center.align-items-center(style='overflow:hidden; clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 0% 100%); height:450px')
-                        img(style='flex-shrink: 0;max-height:500px; max-width:500px;', src='/images/' + #{proj.project_image_str})
-                    .col-9.col-md-6.p-5(style='border-right: solid 1px;')
-                        div
-                        h1.display-6(text=#{proj.project_name})
-                        div
-                        p(ttet=#{proj.project_sub_title})
-                        div
-                        a.btn.btn-lg.btn-outline-dark.mt-5.w-100(href='/projectPage?id=' + #{proj.project_id}, role='button') View
+                    .d-flex.align-items-start(style='min-height:450px')
+                        .col-3.col-md-6.m-0.p-0.d-flex.justify-content-center.align-items-center(style='overflow:hidden; clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 0% 100%); height:450px')
+                            img(style='flex-shrink: 0;max-height:500px; max-width:500px;', src='/images/' + proj.project_image_str)
+                        .col-9.col-md-6.p-5(style='border-right: solid 1px;')
+                            div
+                            h1.display-6 #{proj.project_name}
+                            div
+                            p #{proj.project_sub_title}
+                            div
+                            a.btn.btn-lg.btn-outline-dark.mt-5.w-100(href='/controller/projectPage?id=' + proj.project_id, role='button') View
     .m-0.p-0.justify-content-end.text-end
-        a.col-2.mx-0.p-0.btn.btn-dark(style='border-radius: 0 !important', role='button', data-bs-target='#' + #{car_id}, data-bs-slide='prev')
-        span.carousel-control-prev-icon(aria-hidden='true')
-        span.visually-hidden Previous
-        a.col-2.mx-0.p-0.btn.btn-dark(style='border-radius: 0 !important', role='button',  data-bs-target='#' + #{car_id}, data-bs-slide='next')
-        span.carousel-control-next-icon(aria-hidden='true')
-        span.visually-hidden Next
+        a.col-2.mx-0.p-0.btn.btn-dark(style='border-radius: 0 !important', role='button', data-bs-target='#' + car_id, data-bs-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.visually-hidden Previous
+        a.col-2.mx-0.p-0.btn.btn-dark(style='border-radius: 0 !important', role='button',  data-bs-target='#' + car_id, data-bs-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.visually-hidden Next
     .carousel-indicators.col-12.d-none(style='bottom: -50px;')
-        each proj in #{projects}
-            button(type='button', data-bs-target='#' + #{car_id}, data-bs-slide-to=#{iterStat.index})
+        - for (var i = 1; i < projects.length; i=i+1) {
+            button(type='button', data-bs-target='#' + car_id, data-bs-slide-to=i+1)
+        - }
