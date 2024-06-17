@@ -23,8 +23,8 @@ html
       .splash_title
       #previous_experience_wrapper.content.d-flex.align-items-stretch.justify-content-center.flex-wrap
         each article in articles
-          .work_cube.shadow.mx-3.my-4.border.border-secondary.border-1.p-1.align-items-start.flex-column()
-            .flip-card-inner
+          .work_cube.mx-3.my-4.p-1.align-items-start.flex-column()
+            .flip-card-inner.border.border-secondary.border-1.shadow
               .flip-card-front
                 .logo_wrapper.w-100.text-center.mb-auto.mt-1
                   img.article_logo.mx-auto(style='max-height:200px; max-width: 300px;', src='/images/' + article.article_image_str, alt='Article logo for ' + article.article_title)

@@ -85,3 +85,10 @@
 .flip-card-back {
     transform: rotateY(180deg);
 }
+
+.centered-btn {
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}

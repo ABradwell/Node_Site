@@ -22,8 +22,8 @@ html
     section.content
         #previous_experience_wrapper.content.d-flex.align-items-stretch.justify-content-center.flex-wrap
             each project in projects
-                .work_cube.shadow.mx-3.my-4.border.border-secondary.border-1.p-1.align-items-start.flex-column(style='width:325px; height:400px;')
-                    .flip-card-inner
+                .work_cube.mx-3.my-4.p-1.align-items-start.flex-column(style='width:325px; height:400px;')
+                    .flip-card-inner.border.border-secondary.border-1.shadow
                         .flip-card-front
                             .logo_wrapper.w-100.text-center.mb-auto.mt-3
                                 img.project_logo.mx-auto(style='max-height:200px; max-width: 300px;' src='/images/'+project.project_image_str alt='Project logo for '+project.project_title)
@@ -31,12 +31,12 @@ html
                             .information_wrapper.my-0.col-12
                                 .text-center.justify-content-center
                                     p.fw-bold.text-center.my-0 #{project.project_name}
-                            //- hr
-                            //- #associated_tags_wrapper.mx-auto.ps-2
-                            //- div
-                            //-     p.mb-2 Related Tags...
-                            //-     each tag
-                            //-     span.tag_btn.px-auto.mx-1.badge.rounded-pill.border.border-primary.text-primary(th:each='tag, tagIterStat : ${alltags[projectStat.index]}' th:text='${tag}')
+                            hr
+                            #associated_tags_wrapper.mx-auto.ps-2
+                            .px-2
+                                p.pb-2.mb-0 Related Tags...
+                                each tag in project.tags
+                                    span.tag_btn.px-auto.mx-1.badge.rounded-pill.border.border-primary.text-primary #{tag}
                         .flip-card-back.px-2.d-flex
                             .align-self-center.p-2.bd-highlight.text-center(style='height: 100px')
                                 span#subtitle.fw-bolder(style='line-height: 0.8;') #{project.project_sub_title}

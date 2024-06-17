@@ -21,25 +21,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/js', express.static(__dirname + '/node_modules/typed.js/src'));
-// app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/controller', controllerRouter);
-// app.use('/getArticleCarousel', controllerRouter);
-// app.use('/getProjectCarousel', controllerRouter);
-// app.use('/getEmploymentCarousel', controllerRouter);
-// app.use('/getEmploymentCubes', controllerRouter);
-// app.use('/Articles', controllerRouter);
-// app.use('/projectPage', controllerRouter);
-// app.use('/Projects', controllerRouter);
-// app.use('/Resume', controllerRouter);
-// app.use('/getScreenshotCarousel', controllerRouter);
-
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
 
 // error handler
 app.use(function(err, req, res, next) {

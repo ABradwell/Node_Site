@@ -11,68 +11,44 @@ html
         link(rel="stylesheet", href="/stylesheets/homepage.css")
         link(rel="stylesheet", href="/stylesheets/carousel.css")
         link(rel='stylesheet', href='/stylesheets/style.css')
+
         //- link(rel="stylesheet", href="/css/bootstrap.min.css")
   body.p-0.mx-0.mt-0(min-height="1000px")
     header
         include components\reduced_header.jade
     section#image_and_info.my-4
         .d-none.d-lg-flex.w-100.px-4.ms-5
-            #image.col-12.col-lg-3.text-center
-                img.border.border-3.shadow(style='width:400px; height:400px;', src='/images/personal/headshot.jpg')
+            #image.col-12.col-lg-4.text-center
+                img.border.border-3.shadow(style='width: 100%', src='/images/personal/headshot.jpeg')
             #info.col-12.col-lg-8.pe-5.ps-5.align-self-center
                 .container.my-4.fw-bold.text-center
-                    .row.mx-auto
-                        .col
-                            .p-3.mb-2.text-dark.rounded.border.shadow
-                                | +44 07354-829803
-                        .col
-                            .p-3.mb-2.text-dark.rounded.border.shadow
-                                | AidenBradwell@gmail.com
-                        .col
-                            .p-3.mb-2.text-dark.rounded.border.shadow
-                                a(style='color:black; text-decoration:none', href='https://ca.linkedin.com/in/aiden-bradwell', target='_blank') LinkedIn
                 h3 About Me
                 p
-                    | Hello! My name is Aiden Stevenson Bradwell, a graduate of the University of Ottawa with an Honours BSc dual Major in Computer Science, Major in Psychology. Landing in Reading, United Kingdom in March 2023 I am currently seeking employment in the field of Computer Science.
+                    | Thanks for taking the time! My name is Aiden, a software engineer living in sunny Manchester. Feel free to have a look around, and if you like what you see I'm always available for a chat on LinkedIn! (Self promotion, eh?)
                     br
                     br
-                    | I have extensive experience in project conceptualization, scheduling, development oversight, and hands-on coding. My interests are in team leadership, environmental innovation, public speaking, and project development.
+                    | Out of the office, I enjoy writing and performing music, rock climbing (as all good tech-bros do), reading, and exploring what the city has to offer. If you're looking to touch base and grab a coffee feel free to reach out!
                     br
-                    br
-                    | Through my personal life I am a pub-musician, who frequently partakes in Visual and Musical Arts. I have a strong inclination for self-betterment through reading and exercising.
         .d-lg-none.d-block.w-100.px-4
             #image.mx-auto.text-center
-                img.border.border-3.shadow.mt-3(style='width:400px; height:400px;', src='/images/personal/headshot.jpg')
+                img.border.border-3.shadow.mt-3(style='width:400px; height:400px;', src='/images/personal/headshot.jpeg')
             #info.px-5
-                .container.my-4.fw-bold.text-center
-                    .row.mx-auto
-                        .col
-                            .p-3.mb-2.text-dark.rounded.border.shadow
-                                | +44 07354-829803
-                        .col
-                            .p-3.mb-2.text-dark.rounded.border.shadow
-                                | AidenBradwell@gmail.com
-                        .col
-                            .p-3.mb-2.text-dark.rounded.border.shadow
-                                a(style='color:black; text-decoration:none', href='https://ca.linkedin.com/in/aiden-bradwell', target='_blank') LinkedIn
                 h3 About Me
                 p
-                    | Hello! My name is Aiden Stevenson Bradwell, a graduate of the University of Ottawa with an Honours BSc dual Major in Computer Science, Major in Psychology. Landing in Reading, United Kingdom in March 2023 I am currently seeking employment in the field of Computer Science.
+                    | Thanks for taking the time! My name is Aiden, a software engineer living in sunny Manchester. Feel free to have a look around, and if you like what you see I'm always available for a chat on LinkedIn! (Self promotion, eh?)
                     br
                     br
-                    | I have extensive experience in project conceptualization, scheduling, development oversight, and hands-on coding. My interests are in team leadership, environmental innovation, public speaking, and project development.
+                    | Out of the office, I enjoy writing and performing music, rock climbing (as all good tech-bros do), reading, and exploring what the city has to offer. If you're looking to touch base and grab a coffee feel free to reach out!
                     br
-                    br
-                    | Through my personal life I am a pub-musician, who frequently partakes in Visual and Musical Arts. I have a strong inclination for self-betterment through reading and exercising.
         hr.mb-0.pb-0
         section(style='')
             #splash_background.h-100
                 .bg-white.col-12.col-lg-9.mx-auto.h-100(style='min-height:1000px;')
-                    iframe(src='/resume/Aiden_Stevenson_Bradwell_Resume.pdf', width='100%', height='1200px')
+                    iframe(src='/resume/Aiden_Stevenson_Bradwell_Bolded_2024.pdf', width='100%', height='1200px')
                     p
                         i
                         | Resume not loading? Click 
-                        a(href='/resume/Aiden_Stevenson_Bradwell_Resume.pdf', target='_blank') HERE
+                        a(href='/resume/Aiden_Stevenson_Bradwell_Bolded_2024.pdf', target='_blank') HERE
                         |  to open in new window!
    footer#footer.mt-5
         include components\footer.jade

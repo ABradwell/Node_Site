@@ -31,17 +31,17 @@ block content
                   span.element
           .mt-5
             nav.navbar.sticky-top
-              #button_float.d-flex.justify-content-between.mt-5.pb-3.mx-auto(style='max-width:800px')
-                #first-btn
-                  a.btn.btn-lg.btn-outline-light.fw-light(href='#projects_link') Projects
+              #button_float.d-flex.justify-content-between.mt-5.px-5.px-md-1.pb-3.mx-auto(style='max-width:800px')
+                #first-btn.centered
+                  a.btn.btn-lg.h-100.btn-outline-light.fw-light.centered-btn(href='#projects_link') Projects
                 #second-btn
-                  a.btn.btn-lg.btn-outline-light.fw-light.ms-lg-5.ms-md-3.ms-2(href='#experience_link') Work Experience
+                  a.btn.btn-lg.h-100.btn-outline-light.fw-light.ms-lg-5.ms-md-3.ms-2.centered-btn(href='#experience_link') Work Experience
                 #third-btn
-                  a.btn.btn-lg.btn-outline-light.fw-light.ms-lg-5.ms-md-3.ms-2(href='/controller/Resume') Resume/About me
+                  a.btn.btn-lg.h-100.btn-outline-light.fw-light.ms-lg-5.ms-md-3.ms-2.centered-btn(href='/controller/Resume') Resume & About Me
                 #fourth-btn
-                  a.btn.btn-lg.btn-outline-light.fw-light.ms-lg-5.ms-md-3.ms-2(href='/controller/Articles') Essays & Articles
+                  a.btn.btn-lg.h-100.btn-outline-light.fw-light.ms-lg-5.ms-md-3.ms-2.centered-btn(href='/controller/Articles') Essays & Articles
       hr#projects_link.border.border-darl.border-1
-      section.projects.homepage_content.mx-auto.text-dark.my-5.px-3.px-md-4.px-lg-5
+      section.projects.homepage_content.mx-auto.text-dark.mt-5.px-3.px-md-4.px-lg-5
         .homepage_title.text-primary 
           h3.ps-4 Highlighted Projects 
         #projects_carousel_wrapper
@@ -50,9 +50,11 @@ block content
           a.font-lighter.btn.btn-lg.btn-round.btn-outline-secondary(href='/controller/Projects') See More Projects
       hr#experience_link.border.border-dark.border-1
       section.projects.homepage_content.mx-auto.text-dark.my-5.px-3.px-md-4.px-lg-5
-        .homepage_title.text-primary.d-flex
+        .homepage_title.text-primary.d-flex.pb-0.mb-0
           h3.ps-4 Work Experience
-          h3.ps-5.ms-4.text-secondary.fw-light 16 Months Full time, 2 Years Part Time
+          h3.ps-5.ms-4.text-secondary.fw-light 2 & ½ Years In-field
+        div.text-secondary
+          p.ps-4.mt-0.pt-0 Tap on a position to see more information!
         div
           #previous_experience_wrapper.content.d-flex.align-items-stretch.justify-content-center.flex-wrap
       hr#articles_link.border.border-dark.border-1

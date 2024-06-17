@@ -1,8 +1,8 @@
 block previous_experience_cube
     each employment in past_employment
-      .work_cube.shadow.mx-3.my-4.border.border-secondary.border-1.p-1.align-items-start.flex-column
-        .flip-card-inner
-          .flip-card-front
+      .work_cube.mx-2.my-2.align-items-start.flex-column
+        .flip-card-inner.shadow.border.border-secondary.border-1
+          .flip-card-front.p-3
             .logo_wrapper.w-100.text-center.mb-auto.mt-5
               img.company_logo.mx-auto(style='max-height:120px;', src='/images/' + employment.image_src, alt='Company logo for' + employment.company_name)
             br
@@ -24,4 +24,7 @@ block previous_experience_cube
                   |  - 
                   span #{employment.end_date}
               hr
-              #job_description.px-2 #{employment.job_description}
+              p#job_description.px-3 #{employment.job_description}
+              .gap-3.px-3
+                each tag in employment.tags
+                  span.badge.rounded-pill.bg-danger.me-1 #{tag}
