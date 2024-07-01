@@ -14,7 +14,7 @@ html
         //- link(rel="stylesheet", href="/css/bootstrap.min.css")
   body.p-0.mx-0.mt-0(min-height="1000px")
     header
-        include components\reduced_header.jade
+        include components/reduced_header.jade
     section.content.mb-5.ms-5(id='' style='')
       .homepage_title.text-primary.d-flex
         h3.ps-4 Projects
@@ -43,4 +43,4 @@ html
                                 hr
                                 a.btn.btn-lg.btn-outline-dark.w-100(href='/controller/projectPage?id='+project.project_id role='button') View
     footer#footer.mt-5
-        include components\footer.jade
+        include components/footer.jade
